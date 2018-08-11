@@ -73,17 +73,11 @@ public class StandardSlackService implements SlackService {
 
     public boolean publish(String message, String color) {
         //prepare attachments first
-        JSONObject field = new JSONObject();
-        field.put("short", false);
-        field.put("value", message);
-
-        JSONArray fields = new JSONArray();
-        fields.add(field);
-
         JSONObject attachment = new JSONObject();
+        attachment.put("text", message);
         attachment.put("fallback", message);
         attachment.put("color", color);
-        attachment.put("fields", fields);
+
         JSONArray mrkdwn = new JSONArray();
         mrkdwn.add("pretext");
         mrkdwn.add("text");
